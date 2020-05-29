@@ -7,6 +7,7 @@ public class RangeTreeNode {
 
     public RangeTreeNode(int x, DataPoint point) {
         this(x, point, null, null);
+        subTree = null;
     }
 
     public RangeTreeNode(int x, DataPoint point, RangeTreeNode left, RangeTreeNode right) {
@@ -14,5 +15,10 @@ public class RangeTreeNode {
         this.point = point;
         this.left = left;
         this.right = right;
+    }  
+
+    public boolean equals(RangeTreeNode node) {
+        return this.point.equals(node.point);
     }
+
 }

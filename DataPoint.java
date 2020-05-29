@@ -13,4 +13,7 @@ public class DataPoint {
         return "id: "+id+" ("+x+", "+y+")";
     }
     
+    public boolean equals(DataPoint p) {
+        return this.x == p.x && this.y == p.y && this.id == p.id;
+    }
 }

@@ -29,7 +29,7 @@ public class Test {
         
     }
 
-    private static void print_WBBSTree(WBBSTNode root) {
+    public static void print_WBBSTree(WBBSTNode root) {
         if (root.left != null) {
             print_WBBSTree(root.left);
         }

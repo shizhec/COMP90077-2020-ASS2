@@ -1,5 +1,4 @@
 
-
 public class QueryGenerator {
     private static final int M = 1000000;
 
@@ -18,6 +17,19 @@ public class QueryGenerator {
             this.x_range = x_range;
             this.y_range = y_range;
         }
+
+        public boolean in_xRange(int x) {
+            return x >= this.x_range.lower && x <= this.x_range.upper;
+        }
+
+        public boolean in_yRange(int y) {
+            return y >= this.y_range.lower && y <= this.y_range.upper;
+        }
+
+        public boolean in_Range(DataPoint point) {
+            return this.x_range.lower <= point.x && point.x <= this.x_range.upper && 
+            this.y_range.lower <= point.y && point.y <= this.y_range.upper;
+        }
     }
 
     public class IntRange {
@@ -33,5 +45,9 @@ public class QueryGenerator {
     public void printSquare(Square sq) {
         System.out.println("x range: " + sq.x_range.lower + "-" + sq.x_range.upper);
         System.out.println("y range: " + sq.y_range.lower + "-" + sq.y_range.upper);
+    }
+
+    public Square generate_test_square() {
+        return new Square(new IntRange(3, 5), new IntRange(6, 8));
     }
 }

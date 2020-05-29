@@ -16,4 +16,8 @@ public class WBBSTNode {
         this.right = right;
         this.left = left;
     }
+
+    public boolean equals(WBBSTNode node) {
+        return this.point.equals(node.point);
+    }
 }
