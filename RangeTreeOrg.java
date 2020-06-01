@@ -41,7 +41,7 @@ public class RangeTreeOrg {
         return root;
     }
 
-    private RangeTreeNode construct(ArrayList<DataPoint> points_set) {
+    public RangeTreeNode construct(ArrayList<DataPoint> points_set) {
         // if sets is empty, return null
         if (points_set.size() == 0) {
             return null;
@@ -123,7 +123,7 @@ public class RangeTreeOrg {
         }
         
         // if points set contain elements, construct subtree on sorted y
-        if (root_points_set.size() != 0) {
+        if (root_points_set.size() > 0) {
             WBBST subtree = new WBBST();
             subtree.construct_sorted(root_points_set);
             root.subTree = subtree;
@@ -138,6 +138,10 @@ public class RangeTreeOrg {
     }
 
     public ArrayList<DataPoint> query2d(QueryGenerator.Square range) {
+        if (root == nil) {
+            System.out.println("Range Tree not yet constructed");
+            return null;
+        }
         ArrayList<DataPoint> output = new ArrayList<>();
         // find the successor of lower bound
         int a = find_successor_with_path(range.x_range.lower, root, new Stack<>());
@@ -157,7 +161,7 @@ public class RangeTreeOrg {
         if (have_path(u_split, a, La)) {
             // For each node in the Path La, 
             for (RangeTreeNode node : La) {
-                // other then u_split
+                // other than u_split
                 if (!node.equals(u_split)) {
                     // if node in the range query, report
                     if (range.in_Range(node.point)) {
@@ -165,21 +169,13 @@ public class RangeTreeOrg {
                     }
                     // if a <= node.x
                     if (a <= node.x && node.right != null) {
-                        // find all the points of node's right sub-tree
-                        ArrayList<RangeTreeNode> right_tree = new ArrayList<>();
-                        get_subtreeNode(node.right, right_tree);
-
-                        // for each node in right subtree, find points 
-                        // that in y range through secondery tree query reporting.
-                        for (RangeTreeNode subtree_node : right_tree) {
-                            WBBST sec_tree = subtree_node.subTree;
-                            ArrayList<DataPoint> sec_reported = sec_tree.query(range);
-                            // if there are points reported, add to the final report
-                            if (sec_reported.size() > 0) {
-                                output.addAll(sec_reported);
-                            }
+                        // find points in y range through secondery tree query reporting.
+                        WBBST sec_tree = node.right.subTree;
+                        ArrayList<DataPoint> sec_reported = sec_tree.query(range);
+                        // if there are points reported, add to the final report
+                        if (sec_reported.size() > 0) {
+                            output.addAll(sec_reported);
                         }
-
                     }
 
                 }
@@ -199,22 +195,15 @@ public class RangeTreeOrg {
                     }
                     // if b >= node.x
                     if (b >= node.x && node.left != null) {
-                        // find all the points of node's left sub-tree
-                        ArrayList<RangeTreeNode> left_tree = new ArrayList<>();
-                        get_subtreeNode(node.left, left_tree);
-
-
-                        // for each node in left subtree, find points 
-                        // that in y range through secondery tree query reporting.
-                        for (RangeTreeNode subtree_node : left_tree) {
-                            WBBST sec_tree = subtree_node.subTree;
+                        // find points in y range through secondery tree query reporting.
+                        WBBST sec_tree = node.left.subTree;
+                        if (sec_tree != null) {
                             ArrayList<DataPoint> sec_reported = sec_tree.query(range);
                             // if there are points reported, add to the final report
                             if (sec_reported.size() > 0) {
                                 output.addAll(sec_reported);
                             }
                         }
-
                     }
 
                 }
@@ -223,7 +212,7 @@ public class RangeTreeOrg {
         return output;
     }
 
-    private int find_predecessor_with_path(int x, RangeTreeNode root, Stack<Integer> value) {
+    public int find_predecessor_with_path(int x, RangeTreeNode root, Stack<Integer> value) {
         if (root == null) {
             if (value.size() > 0) {
                 return value.pop();
@@ -240,7 +229,7 @@ public class RangeTreeOrg {
         }
     }
 
-    private int find_successor_with_path(int x, RangeTreeNode root, Stack<Integer> value) {
+    public int find_successor_with_path(int x, RangeTreeNode root, Stack<Integer> value) {
         if (root == null) {
             if (value.size() > 0) {
                 return value.pop();
@@ -257,7 +246,7 @@ public class RangeTreeOrg {
         }
     }
 
-    private RangeTreeNode find_LCA(int a, int b, RangeTreeNode root) {
+    public RangeTreeNode find_LCA(int a, int b, RangeTreeNode root) {
         if (root == null) {
             return null;
         }
@@ -270,7 +259,7 @@ public class RangeTreeOrg {
         return root;
     }
 
-    private boolean have_path(RangeTreeNode node, int x, ArrayList<RangeTreeNode> path) {
+    public boolean have_path(RangeTreeNode node, int x, ArrayList<RangeTreeNode> path) {
         if (node == null) {
             return false;
         }
@@ -287,12 +276,12 @@ public class RangeTreeOrg {
 
     private void get_subtreePoints(RangeTreeNode node, ArrayList<DataPoint> points) {
         if (node.left != null) {
-            points.add(node.left.point);
             get_subtreePoints(node.left, points);
         }
 
+        points.add(node.point);
+
         if (node.right != null) {
-            points.add(node.right.point);
             get_subtreePoints(node.right, points);
         }
     }

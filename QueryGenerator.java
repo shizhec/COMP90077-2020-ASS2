@@ -48,6 +48,6 @@ public class QueryGenerator {
     }
 
     public Square generate_test_square() {
-        return new Square(new IntRange(3, 5), new IntRange(6, 8));
+        return new Square(new IntRange(2, 19), new IntRange(2, 19));
     }
 }

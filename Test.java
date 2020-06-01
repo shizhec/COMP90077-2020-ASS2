@@ -5,9 +5,10 @@ public class Test {
         ArrayList<DataPoint> test = new ArrayList<>();
         size += 1;
         for (int i=1; i < size; i++) {
-            DataPoint point = new DataPoint(i, size - i);
+            DataPoint point = new DataPoint(i, i);
             point.id = i;
             test.add(point);
+            i += 1;
         }
         return test;
     }
@@ -40,4 +41,18 @@ public class Test {
             print_WBBSTree(root.right);
         }
     }
+
+    public static void print_FCarray(ArrayList<DataPointFC> points) {
+        for (DataPointFC dataPointFC : points) {
+            System.out.println(dataPointFC.point);
+            if (dataPointFC.left_successor != null) {
+                System.out.println("left pointer to: " + dataPointFC.left_successor.point);
+            }
+            if (dataPointFC.right_successor != null) {
+                System.out.println("right pointer to: " + dataPointFC.right_successor.point);
+            }
+        }
+    }
+
+    
 }

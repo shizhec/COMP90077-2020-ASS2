@@ -1,0 +1,23 @@
+Construction Experiments:
+==========================Experiment Start==========================
+Construct Naive Tree in 72 milliseconds with 0.01 percent of points
+Construct Smart Tree in 21 milliseconds with 0.01 percent of points
+==========================Experiment Start==========================
+Construct Naive Tree in 178 milliseconds with 0.05 percent of points
+Construct Smart Tree in 66 milliseconds with 0.05 percent of points
+==========================Experiment Start==========================
+Construct Naive Tree in 265 milliseconds with 0.1 percent of points
+Construct Smart Tree in 130 milliseconds with 0.1 percent of points
+==========================Experiment Start==========================
+Construct Naive Tree in 562 milliseconds with 0.2 percent of points
+Construct Smart Tree in 311 milliseconds with 0.2 percent of points
+==========================Experiment Start==========================
+Construct Naive Tree in 1730 milliseconds with 0.5 percent of points
+Construct Smart Tree in 856 milliseconds with 0.5 percent of points
+==========================Experiment Start==========================
+Construct Naive Tree in 3284 milliseconds with 0.8 percent of points
+Construct Smart Tree in 1496 milliseconds with 0.8 percent of points
+==========================Experiment Start==========================
+Construct Naive Tree in 4154 milliseconds with 1.0 percent of points
+Construct Smart Tree in 2030 milliseconds with 1.0 percent of points
+
