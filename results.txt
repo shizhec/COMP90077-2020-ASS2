@@ -21,3 +21,51 @@ Construct Smart Tree in 1496 milliseconds with 0.8 percent of points
 Construct Naive Tree in 4154 milliseconds with 1.0 percent of points
 Construct Smart Tree in 2030 milliseconds with 1.0 percent of points
 
+Query Experiment 1:
+==========================Experiment Start==========================
+Original Range Tree average query time: 662058 with 0.01 percent
+FC Range Tree average query time:       1632462 with 0.01 percent
+==========================Experiment Start==========================
+Original Range Tree average query time: 640711 with 0.02 percent
+FC Range Tree average query time:       1302433 with 0.02 percent
+==========================Experiment Start==========================
+Original Range Tree average query time: 1701215 with 0.05 percent
+FC Range Tree average query time:       3299856 with 0.05 percent
+==========================Experiment Start==========================
+Original Range Tree average query time: 2722405 with 0.1 percent
+FC Range Tree average query time:       5791676 with 0.1 percent
+==========================Experiment Start==========================
+Original Range Tree average query time: 5170568 with 0.2 percent
+FC Range Tree average query time:       11458065 with 0.2 percent
+
+Query Experiment 2:
+==========================Experiment Start==========================
+Original Range Tree average query time: 62727 with n=2000 points
+FC Range Tree average query time:       45935 with n=2000 points
+==========================Experiment Start==========================
+Original Range Tree average query time: 34359 with n=4000 points
+FC Range Tree average query time:       28068 with n=4000 points
+==========================Experiment Start==========================
+Original Range Tree average query time: 41184 with n=8000 points
+FC Range Tree average query time:       41043 with n=8000 points
+==========================Experiment Start==========================
+Original Range Tree average query time: 54355 with n=16000 points
+FC Range Tree average query time:       61581 with n=16000 points
+==========================Experiment Start==========================
+Original Range Tree average query time: 131845 with n=32000 points
+FC Range Tree average query time:       194339 with n=32000 points
+==========================Experiment Start==========================
+Original Range Tree average query time: 233420 with n=64000 points
+FC Range Tree average query time:       289509 with n=64000 points
+==========================Experiment Start==========================
+Original Range Tree average query time: 356176 with n=128000 points
+FC Range Tree average query time:       602841 with n=128000 points
+==========================Experiment Start==========================
+Original Range Tree average query time: 459570 with n=256000 points
+FC Range Tree average query time:       922830 with n=256000 points
+==========================Experiment Start==========================
+Original Range Tree average query time: 883917 with n=512000 points
+FC Range Tree average query time:       1209353 with n=512000 points
+==========================Experiment Start==========================
+Original Range Tree average query time: 1831556 with n=1024000 points
+FC Range Tree average query time:       2693587 with n=1024000 points

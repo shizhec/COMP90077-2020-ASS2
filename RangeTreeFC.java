@@ -11,20 +11,21 @@ public class RangeTreeFC extends RangeTreeOrg{
 
     public RangeTreeNode construct_FC(ArrayList<DataPoint> points_set) {
         // Sort the points set by x coordinate
-        ArrayList<DataPoint> points_set_sorted_x = sort_points_by("x", points_set);
+        points_set = sort_points_by("x", points_set);
 
         // Construct base tree recursively
-        root = construct(points_set_sorted_x);
+        root = construct(points_set);
 
         // Sort the points set by y
-        ArrayList<DataPoint> points_set_sorted_y =  sort_points_by("y", points_set);
+        points_set =  sort_points_by("y", points_set);
 
         // Construct FC Point Array
         ArrayList<DataPointFC> fc_points_set_sorted_y = new ArrayList<>();
-        for (DataPoint dataPoint : points_set_sorted_y) {
+        for (DataPoint dataPoint : points_set) {
             fc_points_set_sorted_y.add(new DataPointFC(dataPoint));
         }
         construct_fc_Array_sorted(root, fc_points_set_sorted_y);
+        
 
         return root;
     }
@@ -75,24 +76,50 @@ public class RangeTreeFC extends RangeTreeOrg{
                                                   ArrayList<DataPointFC> left_points,
                                                   ArrayList<DataPointFC> right_points) {
 
-        for (DataPointFC dataPoint : root_points) {
-            int p = dataPoint.point.y;
-            for (DataPointFC leftPoint : left_points) {
-                int q = leftPoint.point.y;
-                if (p <= q) {
-                    dataPoint.left_successor = leftPoint;
-                    break;
+        // initial data
+        if (left_points.size() > 0){
+            int current_left_index = 0;
+            DataPointFC current_leftPoint;
+            int q_left;
+    
+            for (DataPointFC dataPoint : root_points) {
+                int p = dataPoint.point.y;
+                while (current_left_index < left_points.size()) {
+                    current_leftPoint = left_points.get(current_left_index);
+                    q_left = current_leftPoint.point.y;
+                    if (p <= q_left) {
+                        dataPoint.left_successor = current_leftPoint;
+                        break;
+                    } else {
+                        current_left_index += 1;
+                    }
                 }
+                
             }
+        }
 
-            for (DataPointFC rightPoint : right_points) {
-                int q = rightPoint.point.y;
-                if (p <= q) {
-                    dataPoint.right_successor = rightPoint;
-                    break;
+        if (right_points.size() > 0) {
+            int current_right_index = 0;
+            DataPointFC current_rightPoint;
+            int q_right;
+
+            for (DataPointFC dataPoint : root_points) {
+                int p = dataPoint.point.y;
+                while (current_right_index < right_points.size()) {
+                    current_rightPoint = right_points.get(current_right_index);
+                    q_right = current_rightPoint.point.y;
+                    if (p <= q_right) {
+                        dataPoint.right_successor = current_rightPoint;
+                        break;
+                    } else {
+                        current_right_index += 1;
+                    }
                 }
             }
         }
+        
+
+        
 
     }
 
