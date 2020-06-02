@@ -6,69 +6,48 @@ public class Main{
 
     public static void main(String[] args) {
         // run construction efficiency experiment
-        // construction_exp();
-        // query_exp1();
+        construction_exp();
+        query_exp1();
         query_exp2();
-
-        // ArrayList<DataPoint> test = Test.generate_test_Points(30);
-
-        // RangeTreeOrg rangeTreeOrg_naive = new RangeTreeOrg();
-        // rangeTreeOrg_naive.construct_naive(test);
-
-        // RangeTreeOrg rangeTreeOrg_smart = new RangeTreeOrg();
-        // rangeTreeOrg_smart.construct_sorted(test);
-
-        // RangeTreeFC rangeTreeFC = new RangeTreeFC();
-        // rangeTreeFC.construct_FC(test);
-
-        // QueryGenerator qg = new QueryGenerator();
-        // QueryGenerator.Square range = qg.generate_test_square();
-        // // ArrayList<DataPoint> points = rangeTreeOrg_naive.query2d(range);
-        // // ArrayList<DataPoint> points = rangeTreeOrg_smart.query2d(range);
-        // ArrayList<DataPoint> points = rangeTreeFC.query2d(range);
-        // for (DataPoint dataPoint : points) {
-        //     System.out.println(dataPoint);
-        // }
-
-        // QueryGenerator.Square query = qg.generate_a_query((int)(100000));
-        // ArrayList<DataPoint> org = rangeTreeOrg.query2d(query);
-        // ArrayList<DataPoint> fc = rangeTreeFC.query2d(query);
-
-        // for (DataPoint dataPoint : org) {
-        //     if (!fc.contains(dataPoint)) {
-        //         System.out.println("un_match: "+dataPoint);
-        //     }
-        // }
-        // System.out.println(org.size());
-        // System.out.println(fc.size());
     }
 
     // Perform Constuction efficiency experiments on two
     // different constucting method of the Original Range tree
     private static void construction_exp() {
-        // define Percentages
-        Double[] percentages = {0.01, 0.05, 0.1, 0.2, 0.5, 0.8, 1.0};
         DataPointGenerator dg = new DataPointGenerator();
 
-        for (Double percent : percentages) {
+        for (int i=1; i<=10; i++) {
             System.out.println("==========================Experiment Start==========================");
             // generate the required datapoints set
-            int amount = (int)(percent * M);
-            ArrayList<DataPoint> points = dg.generate_points_set(amount);
+            int amount = (int)Math.pow(2, i) * 1000;
+            long total_time_naive = 0;
+            long total_time_smart = 0;
+            long start;
+            long end;
+            for (int j=0; j<10; j++) {
+                // generate points set
+                ArrayList<DataPoint> points = dg.generate_points_set(amount);
 
-            // Construct RangeTreeOrg in naive way
-            RangeTreeOrg rangeTreeOrg_naive = new RangeTreeOrg();
-            long start = System.currentTimeMillis();
-            rangeTreeOrg_naive.construct_naive(points);
-            long end = System.currentTimeMillis();
-            System.out.println("Construct Naive Tree in "+ (end-start) + " milliseconds with "+percent+" percent of points");
+                // Construct RangeTreeOrg in naive way
+                RangeTreeOrg rangeTreeOrg_naive = new RangeTreeOrg();
+                start = System.currentTimeMillis();
+                rangeTreeOrg_naive.construct_naive(points);
+                end = System.currentTimeMillis();
+                total_time_naive += (end - start);
 
-            // Construct RangeTreeOrg in smart way
-            RangeTreeOrg rangeTreeOrg_smart = new RangeTreeOrg();
-            start = System.currentTimeMillis();
-            rangeTreeOrg_smart.construct_sorted(points);
-            end = System.currentTimeMillis();
-            System.out.println("Construct Smart Tree in "+ (end-start) + " milliseconds with "+percent+" percent of points");
+                // Construct RangeTreeOrg in smart way
+                RangeTreeOrg rangeTreeOrg_smart = new RangeTreeOrg();
+                start = System.currentTimeMillis();
+                rangeTreeOrg_smart.construct_sorted(points);
+                end = System.currentTimeMillis();
+                total_time_smart += (end - start);
+            }
+            long average_time_naive = (long)((float)total_time_naive / (float)10);
+            long average_time_smart = (long)((float)total_time_smart / (float)10);
+
+            
+            System.out.println("Construct Naive Tree average in "+ average_time_naive + " milliseconds with i="+i+", total "+ amount+ " of points");
+            System.out.println("Construct Smart Tree average in "+ average_time_smart + " milliseconds with i="+i+", total "+ amount+ " of points");
         }
     }
 

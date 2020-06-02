@@ -1,25 +1,34 @@
 Construction Experiments:
 ==========================Experiment Start==========================
-Construct Naive Tree in 72 milliseconds with 0.01 percent of points
-Construct Smart Tree in 21 milliseconds with 0.01 percent of points
+Construct Naive Tree average in 8 milliseconds with i=1, total 2000 of points
+Construct Smart Tree average in 3 milliseconds with i=1, total 2000 of points
 ==========================Experiment Start==========================
-Construct Naive Tree in 178 milliseconds with 0.05 percent of points
-Construct Smart Tree in 66 milliseconds with 0.05 percent of points
+Construct Naive Tree average in 10 milliseconds with i=2, total 4000 of points
+Construct Smart Tree average in 7 milliseconds with i=2, total 4000 of points
 ==========================Experiment Start==========================
-Construct Naive Tree in 265 milliseconds with 0.1 percent of points
-Construct Smart Tree in 130 milliseconds with 0.1 percent of points
+Construct Naive Tree average in 11 milliseconds with i=3, total 8000 of points
+Construct Smart Tree average in 5 milliseconds with i=3, total 8000 of points
 ==========================Experiment Start==========================
-Construct Naive Tree in 562 milliseconds with 0.2 percent of points
-Construct Smart Tree in 311 milliseconds with 0.2 percent of points
+Construct Naive Tree average in 24 milliseconds with i=4, total 16000 of points
+Construct Smart Tree average in 13 milliseconds with i=4, total 16000 of points
 ==========================Experiment Start==========================
-Construct Naive Tree in 1730 milliseconds with 0.5 percent of points
-Construct Smart Tree in 856 milliseconds with 0.5 percent of points
+Construct Naive Tree average in 60 milliseconds with i=5, total 32000 of points
+Construct Smart Tree average in 30 milliseconds with i=5, total 32000 of points
 ==========================Experiment Start==========================
-Construct Naive Tree in 3284 milliseconds with 0.8 percent of points
-Construct Smart Tree in 1496 milliseconds with 0.8 percent of points
+Construct Naive Tree average in 137 milliseconds with i=6, total 64000 of points
+Construct Smart Tree average in 63 milliseconds with i=6, total 64000 of points
 ==========================Experiment Start==========================
-Construct Naive Tree in 4154 milliseconds with 1.0 percent of points
-Construct Smart Tree in 2030 milliseconds with 1.0 percent of points
+Construct Naive Tree average in 308 milliseconds with i=7, total 128000 of points
+Construct Smart Tree average in 155 milliseconds with i=7, total 128000 of points
+==========================Experiment Start==========================
+Construct Naive Tree average in 744 milliseconds with i=8, total 256000 of points
+Construct Smart Tree average in 326 milliseconds with i=8, total 256000 of points
+==========================Experiment Start==========================
+Construct Naive Tree average in 1875 milliseconds with i=9, total 512000 of points
+Construct Smart Tree average in 855 milliseconds with i=9, total 512000 of points
+==========================Experiment Start==========================
+Construct Naive Tree average in 4723 milliseconds with i=10, total 1024000 of points
+Construct Smart Tree average in 2064 milliseconds with i=10, total 1024000 of points
 
 Query Experiment 1:
 ==========================Experiment Start==========================
